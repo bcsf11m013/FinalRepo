@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_header.cshtml";
+}
+<div id ="1234">
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $('document').ready(function () {
+
+                $.getJSON("CheckproductRange?Range=@ViewBag.Range", function (data)
+                {
+
+                    if (data) {
+                        $.each(data, function (index) {
+
+
+                            $('#1234').append("<h4 >Price : Rs " + data[index].price + "</h4><h5>Name : "+data[index].name+"</h5>"+"<p>"+data[index].specifications+"</p> <br/>");
+
+                        });
+                      
+                    }
+                    else {
+                        $('#1234').append("<h4 >No Results found !!</h4>");
+                    }
+                });
+
+            });
+
+</script>
